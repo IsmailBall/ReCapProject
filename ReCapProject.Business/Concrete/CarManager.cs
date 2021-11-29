@@ -32,14 +32,24 @@ namespace ReCapProject.Business.Concrete
             return _carDal.GetAll(filter);
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
+        public Car Get(int id)
         {
-            return _carDal.Get(filter);
+            return _carDal.Get(c => c.Id == id);
         }
 
         public void Update(Car car)
         {
             _carDal.Update(car);
+        }
+
+        public Car GetCarsByBrandId(int id)
+        {
+            return _carDal.Get(c => c.BrandId == id);
+        }
+
+        public Car GetCarsByColorId(int id)
+        {
+            return _carDal.Get(c => c.ColorId == id);
         }
     }
 }

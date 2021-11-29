@@ -12,6 +12,8 @@ namespace ReCapProject.Business.Abstract
         void Update(Car car);
         void Delete(Car car);
         List<Car> GetAll(Expression<Func<Car,bool>> filter = null);
-        Car Get(Expression<Func<Car, bool>> filter);
+        Car Get(int id);
+        Car GetCarsByBrandId(int id);
+        Car GetCarsByColorId(int id);
     }
 }
