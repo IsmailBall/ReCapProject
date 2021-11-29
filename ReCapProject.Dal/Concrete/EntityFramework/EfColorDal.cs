@@ -9,9 +9,9 @@ using System.Text;
 
 namespace ReCapProject.DataAccess.Concrete.EntityFramework
 {
-    public class EFCarDal : ICarDal
+    public class EfColorDal : IColorDal
     {
-        public void Add(Car entity)
+        public void Add(Color entity)
         {
             using (CarRentContext context = new CarRentContext())
             {
@@ -21,7 +21,7 @@ namespace ReCapProject.DataAccess.Concrete.EntityFramework
             }
         }
 
-        public void Delete(Car entity)
+        public void Delete(Color entity)
         {
             using (CarRentContext context = new CarRentContext())
             {
@@ -31,25 +31,25 @@ namespace ReCapProject.DataAccess.Concrete.EntityFramework
             }
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
+        public Color Get(Expression<Func<Color, bool>> filter)
         {
             using (CarRentContext context = new CarRentContext())
             {
-                return context.Set<Car>().SingleOrDefault(filter);
+                return context.Set<Color>().SingleOrDefault(filter);
             }
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
             using (CarRentContext context = new CarRentContext())
             {
                 return filter == null ?
-                    context.Set<Car>().ToList() :
-                    context.Set<Car>().Where(filter).ToList();
+                    context.Set<Color>().ToList() :
+                    context.Set<Color>().Where(filter).ToList();
             }
         }
 
-        public void Update(Car entity)
+        public void Update(Color entity)
         {
             using (CarRentContext context = new CarRentContext())
             {

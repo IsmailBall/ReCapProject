@@ -3,6 +3,7 @@ using ReCapProject.DataAccess.Abstarct;
 using ReCapProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace ReCapProject.Business.Concrete
@@ -26,14 +27,14 @@ namespace ReCapProject.Business.Concrete
             _carDal.Delete(car);
         }
 
-        public List<Car> GetAll()
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
-            return _carDal.GetAll();
+            return _carDal.GetAll(filter);
         }
 
-        public Car GetById(int id)
+        public Car Get(Expression<Func<Car, bool>> filter)
         {
-            return _carDal.GetById(id);
+            return _carDal.Get(filter);
         }
 
         public void Update(Car car)

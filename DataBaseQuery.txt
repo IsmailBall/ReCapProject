@@ -1,0 +1,19 @@
+CREATE TABLE [dbo].[Brands] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Name] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+CREATE TABLE [dbo].[Cars] (
+    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+    [BrandId]     INT          NOT NULL,
+    [ColorId]     INT          NOT NULL,
+    [ModelYear]   DATETIME     NOT NULL,
+    [DailyPrice]  MONEY        NOT NULL,
+    [Description] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+CREATE TABLE [dbo].[Colors] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Name] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);

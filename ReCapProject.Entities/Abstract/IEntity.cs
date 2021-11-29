@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReCapProject.Entities.Abstract
 {
-    public class IEntity
+    public interface IEntity
     {
     }
 }

@@ -9,9 +9,9 @@ using System.Text;
 
 namespace ReCapProject.DataAccess.Concrete.EntityFramework
 {
-    public class EFCarDal : ICarDal
+    public class EfBrandDal : IBrandDal
     {
-        public void Add(Car entity)
+        public void Add(Brand entity)
         {
             using (CarRentContext context = new CarRentContext())
             {
@@ -21,7 +21,7 @@ namespace ReCapProject.DataAccess.Concrete.EntityFramework
             }
         }
 
-        public void Delete(Car entity)
+        public void Delete(Brand entity)
         {
             using (CarRentContext context = new CarRentContext())
             {
@@ -31,27 +31,27 @@ namespace ReCapProject.DataAccess.Concrete.EntityFramework
             }
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
+        public Brand Get(Expression<Func<Brand, bool>> filter)
         {
             using (CarRentContext context = new CarRentContext())
             {
-                return context.Set<Car>().SingleOrDefault(filter);
+                return context.Set<Brand>().SingleOrDefault(filter);
             }
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
             using (CarRentContext context = new CarRentContext())
             {
-                return filter == null ?
-                    context.Set<Car>().ToList() :
-                    context.Set<Car>().Where(filter).ToList();
+                return filter == null ? 
+                    context.Set<Brand>().ToList() :
+                    context.Set<Brand>().Where(filter).ToList();
             }
         }
 
-        public void Update(Car entity)
+        public void Update(Brand entity)
         {
-            using (CarRentContext context = new CarRentContext())
+            using(CarRentContext context = new CarRentContext())
             {
                 var updatedBrand = context.Entry(entity);
                 updatedBrand.State = EntityState.Modified;

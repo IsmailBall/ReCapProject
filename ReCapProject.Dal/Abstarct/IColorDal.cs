@@ -5,8 +5,7 @@ using System.Text;
 
 namespace ReCapProject.DataAccess.Abstarct
 {
-    public interface ICarDal:IEntityRepostory<Car>
+    public interface IColorDal:IEntityRepostory<Color>
     {
-        
     }
 }
