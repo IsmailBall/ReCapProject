@@ -1,4 +1,5 @@
 ﻿using ReCapProject.Entities.Concrete;
+using ReCapProject.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -15,5 +16,6 @@ namespace ReCapProject.Business.Abstract
         Car Get(int id);
         Car GetCarsByBrandId(int id);
         Car GetCarsByColorId(int id);
+        List<CarDetail> GetCarDetails();
     }
 }

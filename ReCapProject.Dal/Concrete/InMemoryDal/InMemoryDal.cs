@@ -1,5 +1,6 @@
 ﻿using ReCapProject.DataAccess.Abstarct;
 using ReCapProject.Entities.Concrete;
+using ReCapProject.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,11 @@ namespace ReCapProject.DataAccess.Concrete.InMemoryDal
         }
 
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetail> GetAllCarDetails()
         {
             throw new NotImplementedException();
         }

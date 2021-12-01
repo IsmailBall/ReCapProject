@@ -1,10 +1,10 @@
-﻿using ReCapProject.Entities.Abstract;
+﻿using ReCapProject.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ReCapProject.DataAccess.Abstarct
+namespace ReCapProject.Core.DataAccess
 {
     public interface IEntityRepostory<T> where T: class , IEntity , new() 
     {

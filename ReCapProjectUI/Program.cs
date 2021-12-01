@@ -12,19 +12,28 @@ namespace ReCapProjectUI
     {
         static void Main(string[] args)
         {
-            //FirstDraft();
+
             ICarService carService = new CarManager(new EFCarDal());
-            carService.Add(new Car() { BrandId = 1, DailyPrice = 500, ColorId = 3, ModelYear = DateTime.Now, Description = "YENİ ARAB" });
-            List<Car> cars = carService.GetAll();
+            //AddCars(carService);
+
+            var cars = carService.GetCarDetails();
 
             foreach (var car in cars)
             {
-                Console.WriteLine($"{car.Id} {car.BrandId} {car.ColorId} {car.DailyPrice} {car.Description} ");
+                Console.WriteLine($"{car.Id} {car.BrandName} {car.ColorName} {car.ModelYear.Year} ");
             }
 
             Console.ReadLine();
 
         }
 
+        private static void AddCars(ICarService carService)
+        {
+            carService.Add(new Car() { BrandId = 1, DailyPrice = 500, ColorId = 1, ModelYear = DateTime.Now, Description = "Yeni Araba" });
+            carService.Add(new Car() { BrandId = 2, DailyPrice = 600, ColorId = 2, ModelYear = DateTime.Now, Description = "Yeni Araba" });
+            carService.Add(new Car() { BrandId = 3, DailyPrice = 700, ColorId = 3, ModelYear = DateTime.Now, Description = "Yeni Araba" });
+            carService.Add(new Car() { BrandId = 4, DailyPrice = 800, ColorId = 4, ModelYear = DateTime.Now, Description = "Yeni Araba" });
+            carService.Add(new Car() { BrandId = 5, DailyPrice = 900, ColorId = 5, ModelYear = DateTime.Now, Description = "Yeni Araba" });
+        }
     }
 }
