@@ -18,9 +18,16 @@ namespace ReCapProjectUI
 
             var cars = carService.GetCarDetails();
 
-            foreach (var car in cars)
+            if(cars.Succes != true)
             {
-                Console.WriteLine($"{car.Id} {car.BrandName} {car.ColorName} {car.ModelYear.Year} ");
+                Console.WriteLine(cars.Message);
+            }
+            else
+            {
+                foreach (var car in cars.Data)
+                {
+                    Console.WriteLine($"{car.Id} {car.BrandName} {car.ColorName} {car.ModelYear.Year} ");
+                }
             }
 
             Console.ReadLine();
