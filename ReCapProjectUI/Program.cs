@@ -15,10 +15,35 @@ namespace ReCapProjectUI
 
             ICarService carService = new CarManager(new EFCarDal());
             //AddCars(carService);
+            //DisplayCars(carService);
 
+            IRentalService rentalService = new RentalManager(new EfRentalDal());
+
+            rentalService.Add(new Rental
+            {
+                CarId = 3,
+                CustomerId = 1,
+                RentDate = DateTime.Now.ToString()
+            });
+            var result = rentalService.Add(new Rental
+            {
+                CarId = 3,
+                CustomerId = 1,
+                RentDate = DateTime.Now.ToString()
+            });
+
+
+            Console.WriteLine(result.Succes);
+
+            Console.ReadLine();
+
+        }
+
+        private static void DisplayCars(ICarService carService)
+        {
             var cars = carService.GetCarDetails();
 
-            if(cars.Succes != true)
+            if (cars.Succes != true)
             {
                 Console.WriteLine(cars.Message);
             }
@@ -29,9 +54,6 @@ namespace ReCapProjectUI
                     Console.WriteLine($"{car.Id} {car.BrandName} {car.ColorName} {car.ModelYear.Year} ");
                 }
             }
-
-            Console.ReadLine();
-
         }
 
         private static void AddCars(ICarService carService)
