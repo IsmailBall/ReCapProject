@@ -11,7 +11,7 @@ using System.Text;
 
 namespace ReCapProject.DataAccess.Concrete.EntityFramework
 {
-    public class EFCarDal : EfEntityRepostoryBase<Car, CarRentContext>, ICarDal
+    public class EfCarDal : EfEntityRepostoryBase<Car, CarRentContext>, ICarDal
     {
         public List<CarDetail> GetAllCarDetails()
         {

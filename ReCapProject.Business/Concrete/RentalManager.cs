@@ -1,5 +1,7 @@
 ﻿using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Constants;
+using ReCapProject.Business.ValidationRules.FluentValidation;
+using ReCapProject.Core.Aspects.Autofac.Validation;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.DataAccess.Abstarct;
 using ReCapProject.Entities.Concrete;
@@ -19,7 +21,7 @@ namespace ReCapProject.Business.Concrete
         {
             _rentalDal = rentalDal;
         }
-
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
             var carStates = _rentalDal.GetAllCarsState().FirstOrDefault(cs => cs.Id == rental.CarId

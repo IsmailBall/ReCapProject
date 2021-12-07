@@ -1,5 +1,8 @@
 ﻿using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Constants;
+using ReCapProject.Business.ValidationRules.FluentValidation;
+using ReCapProject.Core.Aspects.Autofac.Validation;
+using ReCapProject.Core.CrossCuttingConcerns.Validation;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.DataAccess.Abstarct;
 using ReCapProject.Entities.Concrete;
@@ -20,8 +23,10 @@ namespace ReCapProject.Business.Concrete
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
+
             _carDal.Add(car);
             return new SuccessResult(Messages.ItemAdded);
         }
