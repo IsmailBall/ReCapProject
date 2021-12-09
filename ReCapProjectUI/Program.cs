@@ -1,5 +1,6 @@
 ﻿using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Concrete;
+using ReCapProject.Business.Constants;
 using ReCapProject.DataAccess.Concrete.EntityFramework;
 using ReCapProject.DataAccess.Concrete.InMemoryDal;
 using ReCapProject.Entities.Concrete;
@@ -13,27 +14,29 @@ namespace ReCapProjectUI
         static void Main(string[] args)
         {
 
-            ICarService carService = new CarManager(new EfCarDal());
-            //AddCars(carService);
-            //DisplayCars(carService);
+            Console.WriteLine(DirectoryPath.GetCarImagesRouter());
 
-            IRentalService rentalService = new RentalManager(new EfRentalDal());
+            //ICarService carService = new CarManager(new EfCarDal());
+            ////AddCars(carService);
+            ////DisplayCars(carService);
 
-            rentalService.Add(new Rental
-            {
-                CarId = 3,
-                CustomerId = 1,
-                RentDate = DateTime.Now.ToString()
-            });
-            var result = rentalService.Add(new Rental
-            {
-                CarId = 3,
-                CustomerId = 1,
-                RentDate = DateTime.Now.ToString()
-            });
+            //IRentalService rentalService = new RentalManager(new EfRentalDal());
+
+            //rentalService.Add(new Rental
+            //{
+            //    CarId = 3,
+            //    CustomerId = 1,
+            //    RentDate = DateTime.Now.ToString()
+            //});
+            //var result = rentalService.Add(new Rental
+            //{
+            //    CarId = 3,
+            //    CustomerId = 1,
+            //    RentDate = DateTime.Now.ToString()
+            //});
 
 
-            Console.WriteLine(result.Succes);
+            //Console.WriteLine(result.Succes);
 
             Console.ReadLine();
 
