@@ -4,3 +4,4 @@
 # 11. gün WebAPI projeye eklendi Rentals ve Cars için controllers yazıldı
 # 12. gün Autofac DependecyResolvers interceptors' lere göre configure edildi , FluentValidation eklendi , Car ve Rental için Validation Rules yazıldı ,Validation aspects eklendi
 # 13. gün FileHelper eklendi BusinessRules static sınıfı eklendi bütün entityler için service , controller , manager eklendi
+# 14. gün Server Authentication ve tüm helper classlar eklendi
