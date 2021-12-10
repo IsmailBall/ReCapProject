@@ -1,7 +1,7 @@
 ﻿using ReCapProject.Business.Abstract;
+using ReCapProject.Core.Entities.Concrete;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.DataAccess.Abstarct;
-using ReCapProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -21,27 +21,25 @@ namespace ReCapProject.Business.Concrete
 
         public IResult Add(User user)
         {
+            _userDal.Add(user);
             return new SuccessResult();
         }
 
-        public IResult Delete(User user)
+        public IDataResult<User> GetByMail(string mail)
         {
-            return new SuccessResult();
+            var result = _userDal.Get(u => u.Email.Equals(mail));
+            if(result != null)
+            {
+                return new SuccessDataResult<User>(result);
+            }
+
+            return new ErrorDataResult<User>();
         }
 
-        public IDataResult<User> Get(int id)
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
-            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id));
-        }
-
-        public IDataResult<List<User>> GetAll(Expression<Func<User, bool>> filter = null)
-        {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(filter));
-        }
-
-        public IResult Update(User user)
-        {
-            return new SuccessResult();
+            var result = _userDal.GetOperationClaims(user);
+            return new SuccessDataResult<List<OperationClaim>>(result);
         }
     }
 }

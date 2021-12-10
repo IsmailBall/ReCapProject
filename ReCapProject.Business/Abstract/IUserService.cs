@@ -1,5 +1,5 @@
-﻿using ReCapProject.Core.Utilities.Results;
-using ReCapProject.Entities.Concrete;
+﻿using ReCapProject.Core.Entities.Concrete;
+using ReCapProject.Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -10,10 +10,7 @@ namespace ReCapProject.Business.Abstract
     public interface IUserService
     {
         IResult Add(User user);
-        IResult Update(User user);
-        IResult Delete(User user);
-        IDataResult<List<User>> GetAll(Expression<Func<User, bool>> filter = null);
-        IDataResult<User> Get(int id);
-
+        IDataResult<List<OperationClaim>> GetClaims(User user);
+        IDataResult<User> GetByMail(string mail);
     }
 }

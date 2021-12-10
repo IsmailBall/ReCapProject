@@ -5,15 +5,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Concrete;
+using ReCapProject.Core.Security.Jwt;
 using ReCapProject.DataAccess.Abstarct;
 using ReCapProject.DataAccess.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using ReCapProject.Core.Security.Encryption;
+using Microsoft.AspNetCore.Http;
+using ReCapProject.Core.Utilities.Ioc;
 
 namespace WebAPI
 {
@@ -34,6 +41,24 @@ namespace WebAPI
             //services.AddSingleton<ICarDal, EFCarDal>();
             //services.AddSingleton<IRentalService, RentalManager>();
             //services.AddSingleton<IRentalDal, EfRentalDal>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = tokenOptions.Issuer,
+                        ValidAudience = tokenOptions.Audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                    };
+                });
+            ServiceTool.Create(services);
 
         }
 
@@ -50,6 +75,8 @@ namespace WebAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
