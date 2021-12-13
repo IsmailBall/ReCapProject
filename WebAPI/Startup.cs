@@ -21,6 +21,8 @@ using Microsoft.IdentityModel.Tokens;
 using ReCapProject.Core.Security.Encryption;
 using Microsoft.AspNetCore.Http;
 using ReCapProject.Core.Utilities.Ioc;
+using ReCapProject.Core.Extensions;
+using ReCapProject.Core.DependencyResolvers;
 
 namespace WebAPI
 {
@@ -41,7 +43,6 @@ namespace WebAPI
             //services.AddSingleton<ICarDal, EFCarDal>();
             //services.AddSingleton<IRentalService, RentalManager>();
             //services.AddSingleton<IRentalDal, EfRentalDal>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -58,7 +59,7 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            ServiceTool.Create(services);
+            services.AddDependencyResolvers(new CoreModule());
 
         }
 

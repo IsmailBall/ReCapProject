@@ -2,6 +2,7 @@
 using ReCapProject.Business.BusinessAspects.Autofac;
 using ReCapProject.Business.Constants;
 using ReCapProject.Business.ValidationRules.FluentValidation;
+using ReCapProject.Core.Aspects.Autofac.Caching;
 using ReCapProject.Core.Aspects.Autofac.Validation;
 using ReCapProject.Core.CrossCuttingConcerns.Validation;
 using ReCapProject.Core.Utilities.Results;
@@ -25,6 +26,7 @@ namespace ReCapProject.Business.Concrete
         }
         [SecuredOperation("car.add")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
 
@@ -37,12 +39,12 @@ namespace ReCapProject.Business.Concrete
             _carDal.Delete(car);
             return new SuccessResult(Messages.ItemDeleted);
         }
-
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(filter),Messages.ItemsListed);
         }
-
+        [CacheAspect]
         public IDataResult<Car> Get(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id),Messages.ItemListed);
