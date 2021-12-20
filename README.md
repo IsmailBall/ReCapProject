@@ -5,3 +5,4 @@
 # 12. gün Autofac DependecyResolvers interceptors' lere göre configure edildi , FluentValidation eklendi , Car ve Rental için Validation Rules yazıldı ,Validation aspects eklendi
 # 13. gün FileHelper eklendi BusinessRules static sınıfı eklendi bütün entityler için service , controller , manager eklendi
 # 14. gün Server Authentication ve tüm helper classlar eklendi
+# 15. gün Cache , Performance ve Transaction aspectleri eklendi
