@@ -6,3 +6,4 @@
 # 13. gün FileHelper eklendi BusinessRules static sınıfı eklendi bütün entityler için service , controller , manager eklendi
 # 14. gün Server Authentication ve tüm helper classlar eklendi
 # 15. gün Cache , Performance ve Transaction aspectleri eklendi
+# 18. gün Image eklemek için bazı düzenlemeler yapıldı
