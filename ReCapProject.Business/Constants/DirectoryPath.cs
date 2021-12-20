@@ -9,22 +9,9 @@ namespace ReCapProject.Business.Constants
     {
         public static string GetCarImagesRouter()
         {
-            var result = Directory.GetCurrentDirectory().Split(@"\");
-            string path = "";
+            string ImagesPath = "wwwroot\\Uploads\\Images\\";
 
-            foreach (var folder in result)
-            {
-                if (folder.Equals("ReCapProject"))
-                {
-                    path += folder + @"\";
-                    break;
-                }
-                path += folder + @"\";
-            }
-
-            path += "ImagesFolder";
-
-            return path;
+            return ImagesPath;
         }
 
         public static string GetDefaultImagesRouter()

@@ -12,5 +12,6 @@ namespace ReCapProject.Business.Abstract
         IResult Add(User user);
         IDataResult<List<OperationClaim>> GetClaims(User user);
         IDataResult<User> GetByMail(string mail);
+        IDataResult<List<User>> GetAll();
     }
 }

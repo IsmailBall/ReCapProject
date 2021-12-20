@@ -16,7 +16,10 @@ namespace ReCapProject.Business.Abstract
         IDataResult<List<Car>> GetAll(Expression<Func<Car,bool>> filter = null);
         IDataResult<Car> Get(int id);
         IDataResult<Car> GetCarsByBrandId(int id);
-        IDataResult<Car> GetCarsByColorId(int id);
+        IDataResult<Car> GetCarByColorId(int id);
         IDataResult<List<CarDetail>> GetCarDetails();
+        IDataResult<List<Car>> GetAllByCategory(int id);
+        IDataResult<List<Car>> GetCarsByColorId(int id);
+
     }
 }

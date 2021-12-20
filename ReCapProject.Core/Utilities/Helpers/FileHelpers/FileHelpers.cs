@@ -42,13 +42,14 @@ namespace ReCapProject.Core.Utilities.Helpers.FileHelpers
                 string extention = Path.GetExtension(formFile.FileName);
                 string guid = GetUniquePath();
                 string filePath = Path.Combine(path, guid) + extention;
+                string forDatabase = Path.Combine("Uploads\\Images\\", guid) + extention;
 
-                using(FileStream fileSteam = File.Create(filePath))
+                using (FileStream fileSteam = File.Create(filePath))
                 {
                     formFile.CopyTo(fileSteam);
                     fileSteam.Flush();
 
-                    return new SuccessDataResult<string>(filePath,"Image was uploaded succesfully");
+                    return new SuccessDataResult<string>(forDatabase, "Image was uploaded succesfully");
                 }
             }
 

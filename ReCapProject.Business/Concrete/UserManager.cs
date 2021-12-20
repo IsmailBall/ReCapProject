@@ -41,5 +41,11 @@ namespace ReCapProject.Business.Concrete
             var result = _userDal.GetOperationClaims(user);
             return new SuccessDataResult<List<OperationClaim>>(result);
         }
+
+        public IDataResult<List<User>> GetAll()
+        {
+            var result = _userDal.GetAll();
+            return new SuccessDataResult<List<User>>(result);
+        }
     }
 }

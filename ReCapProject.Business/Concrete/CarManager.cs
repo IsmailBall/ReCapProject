@@ -62,7 +62,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c => c.BrandId == id),Messages.ItemListed);
         }
 
-        public IDataResult<Car> GetCarsByColorId(int id)
+        public IDataResult<Car> GetCarByColorId(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.ColorId == id),Messages.ItemListed);
         }
@@ -74,6 +74,17 @@ namespace ReCapProject.Business.Concrete
                 return new ErrorDataResult<List<CarDetail>>("Bakim saati");
             }
             return new SuccessDataResult<List<CarDetail>>(_carDal.GetAllCarDetails());
+        }
+
+        public IDataResult<List<Car>> GetAllByCategory(int id)
+        {
+            var result = _carDal.GetAll(c => c.BrandId==id);
+            return new SuccessDataResult<List<Car>>(result);
+        }
+
+        public IDataResult<List<Car>> GetCarsByColorId(int id)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
         }
     }
 }

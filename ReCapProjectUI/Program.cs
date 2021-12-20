@@ -14,7 +14,10 @@ namespace ReCapProjectUI
         static void Main(string[] args)
         {
 
-            Console.WriteLine(DirectoryPath.GetCarImagesRouter());
+            for (int i = 2000; i < 2021; i++)
+            {
+                Console.WriteLine(i);
+            }
 
             //ICarService carService = new CarManager(new EfCarDal());
             ////AddCars(carService);
